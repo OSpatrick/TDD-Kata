@@ -15,7 +15,7 @@ export class VendingMachineComponent implements OnInit {
 
   coinSlot(): boolean {
     
-    this.coinCounterService.count(1);
+    this.coinCounterService.count(1, 1);
     return false;
   }
 }
