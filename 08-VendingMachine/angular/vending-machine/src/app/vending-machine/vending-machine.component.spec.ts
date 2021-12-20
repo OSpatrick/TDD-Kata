@@ -48,4 +48,24 @@ describe('VendingMachineComponent', () => {
     const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
     expect(counterValue.nativeElement.textContent).toBe('0');
   });
+
+  it('should display Nickel button', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Nickel')));
+    expect(counterValue.nativeElement).toBeDefined();
+  });
+
+  it('should display Dime button', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Dime')));
+    expect(counterValue.nativeElement).toBeDefined();
+  });
+
+  it('should display Quarter button', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Quarter')));
+    expect(counterValue.nativeElement).toBeDefined();
+  });
+
+  it('should display Penny button', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#slug')));
+    expect(counterValue.nativeElement).toBeDefined();
+  });
 });
