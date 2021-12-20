@@ -1,4 +1,6 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { CoinCounterService } from '../services/coin-counter.service';
 
 import { VendingMachineComponent } from './vending-machine.component';
@@ -40,5 +42,10 @@ describe('VendingMachineComponent', () => {
     
     component.coinSlot();
     expect(counterServiceSpy).toHaveBeenCalled();
+  });
+
+  it('should display coin count', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
+    expect(counterValue.nativeElement.textContent).toBe('0');
   });
 });
