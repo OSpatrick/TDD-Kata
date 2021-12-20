@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoinCounterService } from '../services/coin-counter.service';
 
 @Component({
   selector: 'app-vending-machine',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vending-machine.component.scss']
 })
 export class VendingMachineComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(public coinCounterService: CoinCounterService) { }
 
   ngOnInit(): void {
   }
 
+  coinSlot(): boolean {
+    
+    this.coinCounterService.count(1);
+    return false;
+  }
 }
