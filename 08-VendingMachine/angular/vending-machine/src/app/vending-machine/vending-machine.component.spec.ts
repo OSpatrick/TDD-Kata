@@ -35,8 +35,8 @@ describe('VendingMachineComponent', () => {
   });
 
   it('should communicate with coinCounter service', () => {
-    let counterServiceSpy = spyOn(component.coinCounterService, 'count');
-    
+    const counterServiceSpy = spyOn(component.coinCounterService, 'count');
+
     component.coinSlot(NICKEL);
     expect(counterServiceSpy).toHaveBeenCalled();
   });
@@ -84,12 +84,17 @@ describe('VendingMachineComponent', () => {
     expect(counterValue.nativeElement.innerText).toBe('15');
   }));
 
-  it('should not add to counter when slug pressed',fakeAsync(() => {
+  it('should not add to counter when slug pressed', fakeAsync(() => {
     let button = fixture.debugElement.query((By.css('#slug'))).nativeElement;
     button.click();
     fixture.detectChanges();
     const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
     expect(counterValue.nativeElement.innerText).toBe('INSERT COIN');
   }));
+
+  it('should display the product selector', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#product-selections')));
+    expect(counterValue.nativeElement).toBeDefined();
+  });
 
 });

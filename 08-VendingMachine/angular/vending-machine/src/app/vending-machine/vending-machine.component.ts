@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinCounterService } from '../services/coin-counter.service';
 import { Coin, VALID_COINS } from 'src/model/coin.interface';
+import {ProductSelectorComponent} from '../product-selector/product-selector.component';
 
 @Component({
   selector: 'app-vending-machine',
@@ -10,13 +11,13 @@ import { Coin, VALID_COINS } from 'src/model/coin.interface';
 export class VendingMachineComponent implements OnInit {
   public coins: Coin[] = VALID_COINS;
   public counter: number = 0;
-  
-  constructor(public coinCounterService: CoinCounterService) { }
+
+  constructor(public coinCounterService: CoinCounterService, public productSelector: ProductSelectorComponent) { }
 
   ngOnInit(): void {
   }
 
-  //TODO: wire up coinSlot to counter
+  // TODO: wire up coinSlot to counter
   coinSlot(coin): void {
     this.counter += this.coinCounterService.count(coin.diameter, coin.weight);
   }
