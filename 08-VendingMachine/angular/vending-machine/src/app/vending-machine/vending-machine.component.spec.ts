@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NICKEL } from 'src/model/coin.interface';
 import { CoinCounterService } from '../services/coin-counter.service';
 
 import { VendingMachineComponent } from './vending-machine.component';
@@ -33,20 +34,16 @@ describe('VendingMachineComponent', () => {
     expect(component.coinSlot).toBeDefined();
   });
 
-  it('should return false if invalid coin', () => {
-    expect(component.coinSlot()).toBeFalse();
-  });
-
   it('should communicate with coinCounter service', () => {
     let counterServiceSpy = spyOn(component.coinCounterService, 'count');
     
-    component.coinSlot();
+    component.coinSlot(NICKEL);
     expect(counterServiceSpy).toHaveBeenCalled();
   });
 
-  it('should display coin count', () => {
+  it('should display INSERT COIN when no coins inserted', () => {
     const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
-    expect(counterValue.nativeElement.textContent).toBe('0');
+    expect(counterValue.nativeElement.textContent).toBe('INSERT COIN');
   });
 
   it('should display Nickel button', () => {
@@ -68,4 +65,31 @@ describe('VendingMachineComponent', () => {
     const counterValue: DebugElement = fixture.debugElement.query((By.css('#slug')));
     expect(counterValue.nativeElement).toBeDefined();
   });
+
+  it('should add nickel when nickel button pressed', fakeAsync(() => {
+    let button = fixture.debugElement.query((By.css('#Nickel'))).nativeElement;
+    button.click();
+    fixture.detectChanges();
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
+    expect(counterValue.nativeElement.innerText).toBe('5');
+  }));
+
+  it('should add nickel when nickel button pressed', fakeAsync(() => {
+    let nickelButton = fixture.debugElement.query((By.css('#Nickel'))).nativeElement;
+    let dimeButton = fixture.debugElement.query((By.css('#Dime'))).nativeElement;
+    dimeButton.click();
+    nickelButton.click();
+    fixture.detectChanges();
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
+    expect(counterValue.nativeElement.innerText).toBe('15');
+  }));
+
+  it('should not add to counter when slug pressed',fakeAsync(() => {
+    let button = fixture.debugElement.query((By.css('#slug'))).nativeElement;
+    button.click();
+    fixture.detectChanges();
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#counter')));
+    expect(counterValue.nativeElement.innerText).toBe('INSERT COIN');
+  }));
+
 });

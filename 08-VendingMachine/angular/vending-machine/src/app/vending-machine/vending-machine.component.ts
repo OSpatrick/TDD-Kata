@@ -9,15 +9,15 @@ import { Coin, VALID_COINS } from 'src/model/coin.interface';
 })
 export class VendingMachineComponent implements OnInit {
   public coins: Coin[] = VALID_COINS;
-
+  public counter: number = 0;
+  
   constructor(public coinCounterService: CoinCounterService) { }
 
   ngOnInit(): void {
   }
 
   //TODO: wire up coinSlot to counter
-  coinSlot(): boolean {
-    this.coinCounterService.count(1, 1);
-    return false;
+  coinSlot(coin): void {
+    this.counter += this.coinCounterService.count(coin.diameter, coin.weight);
   }
 }
