@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Katas
 {
-    public interface SubscriberService
+    public interface ISubscriberService
     {
        List<string> GetSubscribersThatWillExpireBetweenNowAndDate(int day, int month, int year);
     }

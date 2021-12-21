@@ -3,9 +3,9 @@ namespace Katas
 {
     public class RenewalNotificationService
     {
-		SubscriberService myThing;
+		ISubscriberService myThing;
 
-		public RenewalNotificationService(SubscriberService subscriberService, EmailService emailService)
+		public RenewalNotificationService(ISubscriberService subscriberService, EmailService emailService)
 		{
 			myThing = subscriberService;
 		}

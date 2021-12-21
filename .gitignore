@@ -98,3 +98,5 @@ typings/
 =======
 **/.vs
 >>>>>>> fde7c38d1ff585ceb7e94507c083e8d41940868a
+/.vscode/tasks.json
+/.vscode/launch.json
