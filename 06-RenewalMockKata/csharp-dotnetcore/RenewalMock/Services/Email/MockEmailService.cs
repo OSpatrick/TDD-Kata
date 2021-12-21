@@ -6,9 +6,13 @@ namespace Katas
 {
     public class MockEmailService : IEmailService
     {
+        public string  Message { get; private set; }
+        public List<string> EmailList { get; private set; }
+
         public void EmailMessage(string message, List<string> emails)
         {
-            throw new NotImplementedException();
+            Message = message;
+            EmailList = emails;
         }
     }
 }

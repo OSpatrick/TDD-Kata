@@ -5,18 +5,24 @@ namespace Katas
 {
     public class MockSubscriberService : ISubscriberService
     {
-        Random random = new Random();
+        private readonly List<string> _subscriberEmailList;
+
+        public int Day { get; private set;}
+        public int Month { get; private set; }
+        public int Year { get; private set; }
+
         public List<string> GetSubscribersThatWillExpireBetweenNowAndDate(int day, int month, int year)
         {
-            if (random.NextDouble() < 0.5)
-            {
-                return null;
-            }
-            else
-            {
-                String[] strings = { "mysterious email" + random.Next() };
-                return new List<string>(strings);
-            }
+            Day = day;
+            Month = month;
+            Year = year;
+
+            return _subscriberEmailList;
+        }
+
+        public MockSubscriberService(List<string> subscriberEmailList)
+        {
+            _subscriberEmailList = subscriberEmailList;
         }
     }
 }

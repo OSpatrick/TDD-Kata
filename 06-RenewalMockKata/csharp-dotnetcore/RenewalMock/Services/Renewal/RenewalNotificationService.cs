@@ -1,13 +1,22 @@
 ﻿using System;
 namespace Katas
 {
-    public static class RenewalNotificationService
+    public class RenewalNotificationService
     {
-		public static void notifyAtRiskSubscribers(ISubscriberService subscriberService, IEmailService emailService) {
-            if (subscriberService == null) throw new ArgumentNullException("subscriberService");
-            if (emailService == null) throw new ArgumentNullException("emailService");
+        private readonly ISubscriberService _subscriberService;
+        private readonly IEmailService _emailService;
 
+        //TODO: Add date field.
 
+        public RenewalNotificationService(ISubscriberService subscriberService, IEmailService emailService)
+        {
+            _subscriberService = subscriberService;
+            _emailService = emailService;
+        }
+
+        public void notifyAtRiskSubscribers() {
+            _emailService.EmailMessage("Please renew your subscription.", 
+                                       _subscriberService.GetSubscribersThatWillExpireBetweenNowAndDate(1,1,2021));
         }
     }
 }
