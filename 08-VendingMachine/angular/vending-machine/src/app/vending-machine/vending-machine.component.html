@@ -1,15 +1,16 @@
 <p id='vendingMachine'>vending-machine works!</p>
 <div>
-    <h1 id='counter' *ngIf="counter>0">{{counter}}</h1>
-    <h1 id='counter' #elseBlock>INSERT COIN</h1>
-
+    <h1 id='counter' *ngIf="counter>0 ; else instertCoin">{{counter}}</h1>
+    <ng-template  #instertCoin>
+        <h1 id='counter'>INSERT COIN</h1>
+    </ng-template>
     <ul>
-      <li *ngFor="let coin of coins">
-          <button id='{{coin.name}}' class="button-29" (click)="coinSlot(coin)">{{coin.name}}</button>
-      </li>
-      <li>
-          <button id='slug' class="button-29">Slug</button>
-      </li>
+        <li *ngFor="let coin of coins">
+            <button id='{{coin.name}}' class="button-29" (click)="coinSlot(coin)">{{coin.name}}</button>
+        </li>
+        <li>
+            <button id='slug' class="button-29">Slug</button>
+        </li>
     </ul>
 </div>
 <app-product-selector></app-product-selector>
