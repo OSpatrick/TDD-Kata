@@ -20,7 +20,12 @@ describe('ProductDispensorComponent', () => {
     fixture.detectChanges();
   });
 
+  it('defaults the despensed product to null', () => {
+    expect(component.dispensedProduct).toBeNull();
+  });
+
   it('should dispense', () => {
+    // TODO: weak test
     expect(component.dispenseProduct(COLA)).toBeTruthy();
   });
 });

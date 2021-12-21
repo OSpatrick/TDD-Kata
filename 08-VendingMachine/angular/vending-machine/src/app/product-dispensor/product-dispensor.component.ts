@@ -6,14 +6,20 @@ import {Product} from '../../model/product.interface';
   templateUrl: './product-dispensor.component.html',
   styleUrls: ['./product-dispensor.component.scss']
 })
-export class ProductDispensorComponent implements OnInit {
 
-  constructor() { }
+export class ProductDispensorComponent implements OnInit {
+  dispensedProduct: Product;
+
+  constructor() {
+    this.dispensedProduct = null;
+  }
 
   ngOnInit(): void {
   }
 
+  // TODO: clean this crap
   dispenseProduct(product: Product) {
-    return true;
+    this.dispensedProduct = product;
+    return '🥤';
   }
 }
