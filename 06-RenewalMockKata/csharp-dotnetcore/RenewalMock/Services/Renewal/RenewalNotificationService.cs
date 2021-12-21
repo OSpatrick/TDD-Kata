@@ -6,8 +6,6 @@ namespace Katas
         private readonly ISubscriberService _subscriberService;
         private readonly IEmailService _emailService;
 
-        //TODO: Add date field.
-
         public RenewalNotificationService(ISubscriberService subscriberService, IEmailService emailService)
         {
             _subscriberService = subscriberService;
@@ -15,8 +13,9 @@ namespace Katas
         }
 
         public void notifyAtRiskSubscribers() {
-            _emailService.EmailMessage("Please renew your subscription.", 
-                                       _subscriberService.GetSubscribersThatWillExpireBetweenNowAndDate(1,1,2021));
+            var expirationDate = DateTime.Now.AddDays(-90);
+            _emailService.EmailMessage("Please renew your subscription to Ferret Fancy!", 
+                                       _subscriberService.GetSubscribersThatWillExpireBetweenNowAndDate(expirationDate.Day, expirationDate.Month, expirationDate.Year));
         }
     }
 }

@@ -25,25 +25,18 @@ namespace Katas
         public void ValidateEmailMessage() {
 
             _renewalNotificationService.notifyAtRiskSubscribers();
-            _emailService.Message.Should().Be("Please renew your subscription.");
+            _emailService.Message.Should().Be("Please renew your subscription to Ferret Fancy!");
             _emailService.EmailList.Should().BeEquivalentTo(_subscriberEmailList);
         }
 
         [Fact]
         public void ValidateRenewDate() {
+            var expirationDate =  DateTime.Now.AddDays(-90);
             _renewalNotificationService.notifyAtRiskSubscribers();
-            _mockSubscriberService.Day.Should().Be(1);
-            _mockSubscriberService.Month.Should().Be(1);
-            _mockSubscriberService.Year.Should().Be(2020);
+            _mockSubscriberService.Day.Should().Be(expirationDate.Day);
+            _mockSubscriberService.Month.Should().Be(expirationDate.Month);
+            _mockSubscriberService.Year.Should().Be(expirationDate.Year);
         }
 
-        //[Fact]
-        //public void TestNotificationServiceForNullArguments() {
-        //    var act = () => new RenewalNotificationService(null, new MockEmailService());
-        //    act.Should().ThrowExactly<ArgumentNullException>().WithMessage("Value cannot be null. (Parameter 'subscriberService')");
-
-        //    act = () => new RenewalNotificationService(new MockSubscriberService(), null);
-        //    act.Should().ThrowExactly<ArgumentNullException>().WithMessage("Value cannot be null. (Parameter 'emailService')");
-        //}
     }
 }

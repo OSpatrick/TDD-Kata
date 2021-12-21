@@ -7,7 +7,7 @@ namespace Katas
     {
         private readonly List<string> _subscriberEmailList;
 
-        public int Day { get; private set;}
+        public int Day { get; private set; }
         public int Month { get; private set; }
         public int Year { get; private set; }
 
