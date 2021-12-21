@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { product, PRODUCTS } from 'src/model/product.interface';
+import { Product, PRODUCTS } from 'src/model/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ProductService {
     return PRODUCTS;
   }
 
-  dispense(product: product, availableCoins: number): boolean {
+  dispense(product: Product, availableCoins: number): boolean {
     if(availableCoins < product.price)
     {
       return false;

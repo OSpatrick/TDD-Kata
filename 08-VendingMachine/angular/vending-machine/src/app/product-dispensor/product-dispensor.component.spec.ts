@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductDispensorComponent } from './product-dispensor.component';
+import {COLA} from '../../model/product.interface';
 
 describe('ProductDispensorComponent', () => {
   let component: ProductDispensorComponent;
@@ -19,7 +20,7 @@ describe('ProductDispensorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should dispense', () => {
+    expect(component.dispenseProduct(COLA)).toBeTruthy();
   });
 });

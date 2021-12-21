@@ -1,21 +1,21 @@
-export interface product {
+export interface Product {
     name: string,
-    price: number
+    price: number;
 }
 
-export const COLA: product = {
+export const COLA: Product = {
     name: 'Cola',
     price: 100
-}
+};
 
-export const CHIPS: product = {
+export const CHIPS: Product = {
     name: 'Chips',
     price: 50
-}
+};
 
-export const CANDY: product = {
+export const CANDY: Product = {
     name: 'Candy',
     price: 65
-}
+};
 
-export const PRODUCTS: product[] = [COLA, CHIPS, CANDY];
+export const PRODUCTS: Product[] = [COLA, CHIPS, CANDY];
