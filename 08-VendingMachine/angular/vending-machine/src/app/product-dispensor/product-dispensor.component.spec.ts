@@ -31,6 +31,6 @@ describe('ProductDispensorComponent', () => {
     tick();
     expect(component.dispensedProduct.name).toBe('Cola');
     const dispenseElement: DebugElement = fixture.debugElement.query((By.css('#product-dispenser')));
-    // expect(dispenseElement.nativeElement.innerText).toBe('5');
+    expect(dispenseElement.nativeElement.innerText).toBe('5');
   }));
 });

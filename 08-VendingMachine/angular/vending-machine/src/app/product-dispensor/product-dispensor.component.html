@@ -1,5 +1,11 @@
 <div id="product-dispenser">
+
   <div *ngIf="dispensedProduct">
-    {{dispensedProduct.name}}
+    <p>Variable is not null.</p>
   </div>
+
+  <div *ngIf="!dispensedProduct">
+    <p>Variable is null.</p>
+  </div>
+Todd wuz here {{dispensedProduct}}
 </div>

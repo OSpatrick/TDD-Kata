@@ -17,8 +17,8 @@ export class ProductDispensorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // TODO: clean this crap
   dispenseProduct(product: Product): void {
     this.dispensedProduct = product;
+    console.log(this.dispensedProduct);
   }
 }

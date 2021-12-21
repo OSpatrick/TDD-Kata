@@ -1,7 +1,7 @@
 <p id='vendingMachine'>vending-machine works!</p>
 <div>
-    <h1 id='counter' *ngIf="counter>0 ; else instertCoin">{{counter}}</h1>
-    <ng-template  #instertCoin>
+    <h1 id='counter' *ngIf="counter>0 ; else insertCoin">{{counter}}</h1>
+    <ng-template  #insertCoin>
         <h1 id='counter'>INSERT COIN</h1>
     </ng-template>
     <ul>
