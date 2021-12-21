@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VendingMachineComponent } from './vending-machine/vending-machine.component';
 import { ProductSelectorComponent } from './product-selector/product-selector.component';
+import { CoinCounterService } from './services/coin-counter.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { ProductSelectorComponent } from './product-selector/product-selector.co
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CoinCounterService, ProductService],
+  bootstrap: [AppComponent, ProductSelectorComponent, VendingMachineComponent]
 })
 export class AppModule { }

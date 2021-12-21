@@ -8,6 +8,6 @@ export class ProductService {
   constructor() { }
 
   products(): any {
-    return ['Coke', 'Chips', 'Candy'];
+    return ['Cola', 'Chips', 'Candy'];
   }
 }

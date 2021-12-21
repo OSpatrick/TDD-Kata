@@ -35,18 +35,21 @@ There are three products:
        and subsequent checks of the display will display either INSERT COIN or the current amount as appropriate.
    */
   it('should display cola button', () => {
-    const counterValue: DebugElement = fixture.debugElement.query((By.css('#cola')));
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Cola')));
     expect(counterValue.nativeElement).toBeDefined();
   });
 
   it('should display chips button', () => {
-    const counterValue: DebugElement = fixture.debugElement.query((By.css('#chips')));
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Chips')));
     expect(counterValue.nativeElement).toBeDefined();
   });
 
   it('should display candy button', () => {
-    const counterValue: DebugElement = fixture.debugElement.query((By.css('#candy')));
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Candy')));
     expect(counterValue.nativeElement).toBeDefined();
   });
 
+  it('should get products from product service', () => {
+    expect(component.getProducts().length).toBe(3);
+  });
 });

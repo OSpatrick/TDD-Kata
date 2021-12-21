@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Injectable } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +16,12 @@ import { Injectable } from '@angular/core';
 
 export class ProductSelectorComponent implements OnInit {
 
-  constructor() { }
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
   }
 
+  getProducts(): string[] {
+    return this.productService.products();
+  }
 }

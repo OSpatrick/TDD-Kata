@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { VendingMachineComponent } from './vending-machine/vending-machine.component';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,4 @@ import { VendingMachineComponent } from './vending-machine/vending-machine.compo
 })
 export class AppComponent {
   title = 'vending-machine';
-  vendingMachine: any = VendingMachineComponent;
-
 }

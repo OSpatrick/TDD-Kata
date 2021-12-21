@@ -11,11 +11,11 @@ describe('ProductService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(service).toBeTruthy(); 
   });
 
   it('should get products', () => {
-    expect(service.products()).toEqual(['Coke', 'Chips', 'Candy']);
+    expect(service.products()).toEqual(['Cola', 'Chips', 'Candy']);
   });
 
 });
