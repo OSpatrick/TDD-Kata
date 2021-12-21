@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Katas
 {
-    public interface EmailService
+    public interface IEmailService
     {
         void EmailMessage(String message, List<String> emails);
     }

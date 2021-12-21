@@ -5,7 +5,7 @@ namespace Katas
     {
 		ISubscriberService myThing;
 
-		public RenewalNotificationService(ISubscriberService subscriberService, EmailService emailService)
+		public RenewalNotificationService(ISubscriberService subscriberService, IEmailService emailService)
 		{
 			myThing = subscriberService;
 		}
