@@ -102,4 +102,9 @@ describe('VendingMachineComponent', () => {
     expect(counterValue.nativeElement).toBeDefined();
   });
 
+  it('should display the product dispenser', () => {
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#product-dispenser')));
+    expect(counterValue.nativeElement).toBeDefined();
+  });
+
 });
