@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { Injectable } from '@angular/core';
+import { Product } from 'src/model/product.interface';
 import { ProductService } from '../services/product.service';
 
 @Injectable({
@@ -18,7 +19,13 @@ export class ProductSelectorComponent implements OnInit {
 
   constructor(public productService: ProductService) { }
 
+  @Output() selectedProductEmitter = new EventEmitter<Product>();
+
   ngOnInit(): void {
+  }
+
+  selectProduct(selectedProduct: Product): void {
+    this.selectedProductEmitter.emit(selectedProduct);
   }
 
   getProducts(): string[] {

@@ -4,6 +4,9 @@ import { ProductDispensorComponent } from './product-dispensor.component';
 import {COLA} from '../../model/product.interface';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import { not } from '@angular/compiler/src/output/output_ast';
+import { ProductSelectorComponent } from '../product-selector/product-selector.component';
+import { VendingMachineComponent } from '../vending-machine/vending-machine.component';
 
 describe('ProductDispensorComponent', () => {
   let component: ProductDispensorComponent;
@@ -11,7 +14,7 @@ describe('ProductDispensorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductDispensorComponent ]
+      declarations: [ ProductDispensorComponent, ProductSelectorComponent, VendingMachineComponent ]
     })
     .compileComponents();
   });
@@ -27,10 +30,15 @@ describe('ProductDispensorComponent', () => {
   });
 
   it('should dispense product', fakeAsync(() => {
-    component.dispenseProduct(COLA);
-    tick();
+    fixture.debugElement.query((By.css('#Cola'))).nativeElement.click();
+    fixture.detectChanges();
     expect(component.dispensedProduct.name).toBe('Cola');
     const dispenseElement: DebugElement = fixture.debugElement.query((By.css('#product-dispenser')));
-    expect(dispenseElement.nativeElement.innerText).toBe('5');
+    expect(dispenseElement.nativeElement.innerText).toBe('Cola');
   }));
+
+  it('should display input product', () => {
+
+    expect(component.dispensedProduct).not.toBeNaN();
+  });
 });

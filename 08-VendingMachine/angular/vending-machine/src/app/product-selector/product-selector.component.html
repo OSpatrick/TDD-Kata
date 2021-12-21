@@ -2,6 +2,6 @@
 
 <ul id="product-selections">
   <li *ngFor='let product of getProducts()'>
-    <button id="{{product.name}}">{{product.name}}</button>
+    <button id="{{product.name}}" (click)="selectProduct(product)">{{product.name}}</button>
   </li>
 </ul>

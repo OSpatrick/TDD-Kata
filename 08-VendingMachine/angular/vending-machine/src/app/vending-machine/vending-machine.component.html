@@ -13,5 +13,5 @@
         </li>
     </ul>
 </div>
-<app-product-selector></app-product-selector>
-<app-product-dispensor></app-product-dispensor>
+<app-product-selector (selectedProductEmitter)='productSelected($event)'></app-product-selector>
+<app-product-dispensor [dispensedProduct]='selectedProduct'></app-product-dispensor>

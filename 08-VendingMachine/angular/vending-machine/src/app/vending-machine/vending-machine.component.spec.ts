@@ -3,6 +3,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NICKEL } from 'src/model/coin.interface';
+import { COLA } from 'src/model/product.interface';
 import { AppModule } from '../app.module';
 import { ProductSelectorComponent } from '../product-selector/product-selector.component';
 import { CoinCounterService } from '../services/coin-counter.service';
@@ -105,6 +106,12 @@ describe('VendingMachineComponent', () => {
   it('should display the product dispenser', () => {
     const counterValue: DebugElement = fixture.debugElement.query((By.css('#product-dispenser')));
     expect(counterValue.nativeElement).toBeDefined();
+  });
+
+  it('should input to dispensor', () => {
+    fixture.debugElement.query((By.css('#Cola'))).nativeElement.click();
+    fixture.detectChanges();
+    expect(component.selectedProduct).toEqual(COLA);
   });
 
 });

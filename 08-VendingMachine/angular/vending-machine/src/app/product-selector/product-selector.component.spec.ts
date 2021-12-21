@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { ProductSelectorComponent } from './product-selector.component';
 import {DebugElement} from '@angular/core';
@@ -39,4 +39,11 @@ describe('ProductSelectorComponent', () => {
   it('should get products from product service', () => {
     expect(component.getProducts().length).toBe(3);
   });
+
+  it('should emit event on selection', fakeAsync(() => {
+    let spy: any = spyOn(component.selectedProductEmitter, 'emit');
+    fixture.debugElement.query((By.css('#Cola'))).nativeElement.click();
+    fixture.detectChanges();
+    expect(spy).toHaveBeenCalled();
+  }));
 });

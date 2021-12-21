@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import {Product} from '../../model/product.interface';
 
 @Component({
@@ -8,7 +8,8 @@ import {Product} from '../../model/product.interface';
 })
 
 export class ProductDispensorComponent implements OnInit {
-  public dispensedProduct: Product;
+  
+  @Input() public dispensedProduct: Product;
 
   constructor() {
     this.dispensedProduct = null;
@@ -17,8 +18,7 @@ export class ProductDispensorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  dispenseProduct(product: Product): void {
-    this.dispensedProduct = product;
-    console.log(this.dispensedProduct);
-  }
+  // dispenseProduct(product: Product): void {
+  //   this.dispensedProduct = product;
+  // }
 }
