@@ -20,7 +20,7 @@ describe('ProductDispensorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('defaults the despensed product to null', () => {
+  it('defaults the dispensed product to null', () => {
     expect(component.dispensedProduct).toBeNull();
   });
 
