@@ -8,7 +8,7 @@ import {Product} from '../../model/product.interface';
 })
 
 export class ProductDispensorComponent implements OnInit {
-  dispensedProduct: Product;
+  public dispensedProduct: Product;
 
   constructor() {
     this.dispensedProduct = null;
@@ -18,8 +18,7 @@ export class ProductDispensorComponent implements OnInit {
   }
 
   // TODO: clean this crap
-  dispenseProduct(product: Product) {
+  dispenseProduct(product: Product): void {
     this.dispensedProduct = product;
-    return '🥤';
   }
 }

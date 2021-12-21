@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import { ProductDispensorComponent } from './product-dispensor.component';
 import {COLA} from '../../model/product.interface';
@@ -24,8 +24,8 @@ describe('ProductDispensorComponent', () => {
     expect(component.dispensedProduct).toBeNull();
   });
 
-  it('should dispense', () => {
-    // TODO: weak test
-    expect(component.dispenseProduct(COLA)).toBeTruthy();
-  });
+  it('should dispense product', fakeAsync(() => {
+    component.dispenseProduct(COLA);
+    expect(component.dispensedProduct.name).toBe('Cola');
+  }));
 });

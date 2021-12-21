@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { ProductSelectorComponent } from './product-selector/product-selector.component';
 import { VendingMachineComponent } from './vending-machine/vending-machine.component';
+import {ProductDispensorComponent} from './product-dispensor/product-dispensor.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         VendingMachineComponent,
-        ProductSelectorComponent
+        ProductSelectorComponent,
+        ProductDispensorComponent
       ],
     }).compileComponents();
   });
@@ -35,7 +37,7 @@ describe('AppComponent', () => {
   it('should display vending machine data', ()=> {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    
+
     const vendingMachineMessage: DebugElement = fixture.debugElement.query((By.css('#vendingMachine')));
 
     expect(vendingMachineMessage.nativeElement.textContent).toEqual('vending-machine works!');
