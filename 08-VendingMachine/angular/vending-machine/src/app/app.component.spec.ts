@@ -3,7 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { ProductSelectorComponent } from './product-selector/product-selector.component';
 import { VendingMachineComponent } from './vending-machine/vending-machine.component';
+import {ProductDispensorComponent} from './product-dispensor/product-dispensor.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,7 +15,9 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        VendingMachineComponent
+        VendingMachineComponent,
+        ProductSelectorComponent,
+        ProductDispensorComponent
       ],
     }).compileComponents();
   });
@@ -30,17 +34,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('vending-machine');
   });
 
-  it('vending machine should exist', ()=> {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-
-    expect(app.vendingMachine).toBeDefined();
-  });
-
   it('should display vending machine data', ()=> {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    
+
     const vendingMachineMessage: DebugElement = fixture.debugElement.query((By.css('#vendingMachine')));
 
     expect(vendingMachineMessage.nativeElement.textContent).toEqual('vending-machine works!');

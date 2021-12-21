@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { ProductSelectorComponent } from './product-selector.component';
 import {DebugElement} from '@angular/core';
@@ -21,32 +21,29 @@ describe('ProductSelectorComponent', () => {
     fixture.detectChanges();
   });
 
-  /*
-There are three products:
-   cola for $1.00,
-   chips for $0.50,
-   and candy for $0.65.
-
-   When the respective button is pressed and enough money has been inserted,
-   the product is dispensed and the machine displays THANK YOU.
-
-   If the display is checked again, it will display INSERT COIN and the current amount will be set to $0.00.
-   If there is not enough money inserted then the machine displays PRICE and the price of the item
-       and subsequent checks of the display will display either INSERT COIN or the current amount as appropriate.
-   */
   it('should display cola button', () => {
-    const counterValue: DebugElement = fixture.debugElement.query((By.css('#cola')));
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Cola')));
     expect(counterValue.nativeElement).toBeDefined();
   });
 
   it('should display chips button', () => {
-    const counterValue: DebugElement = fixture.debugElement.query((By.css('#chips')));
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Chips')));
     expect(counterValue.nativeElement).toBeDefined();
   });
 
   it('should display candy button', () => {
-    const counterValue: DebugElement = fixture.debugElement.query((By.css('#candy')));
+    const counterValue: DebugElement = fixture.debugElement.query((By.css('#Candy')));
     expect(counterValue.nativeElement).toBeDefined();
   });
 
+  it('should get products from product service', () => {
+    expect(component.getProducts().length).toBe(3);
+  });
+
+  it('should emit event on selection', fakeAsync(() => {
+    let spy: any = spyOn(component.selectedProductEmitter, 'emit');
+    fixture.debugElement.query((By.css('#Cola'))).nativeElement.click();
+    fixture.detectChanges();
+    expect(spy).toHaveBeenCalled();
+  }));
 });

@@ -5,18 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VendingMachineComponent } from './vending-machine/vending-machine.component';
 import { ProductSelectorComponent } from './product-selector/product-selector.component';
+import { CoinCounterService } from './services/coin-counter.service';
+import { ProductService } from './services/product.service';
+import { ProductDispensorComponent } from './product-dispensor/product-dispensor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VendingMachineComponent,
-    ProductSelectorComponent
+    ProductSelectorComponent,
+    ProductDispensorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CoinCounterService, ProductService],
+  bootstrap: [AppComponent, ProductSelectorComponent, VendingMachineComponent]
 })
 export class AppModule { }

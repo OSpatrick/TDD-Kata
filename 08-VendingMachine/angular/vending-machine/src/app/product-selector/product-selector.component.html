@@ -1,7 +1,7 @@
 <p>product-selector works!</p>
 
 <ul id="product-selections">
-  <li id="cola"></li>
-  <li id="chips"></li>
-  <li id="candy"></li>
+  <li *ngFor='let product of getProducts()'>
+    <button id="{{product.name}}" (click)="selectProduct(product)">{{product.name}}</button>
+  </li>
 </ul>
