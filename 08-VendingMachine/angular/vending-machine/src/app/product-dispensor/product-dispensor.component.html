@@ -1,3 +1,5 @@
 <div id="product-dispenser">
-  <p>{{dispensedProduct}}</p>
+  <div *ngIf="dispensedProduct">
+    {{dispensedProduct.name}}
+  </div>
 </div>
