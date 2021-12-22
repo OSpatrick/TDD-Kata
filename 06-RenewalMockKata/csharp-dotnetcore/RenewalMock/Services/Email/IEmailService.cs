@@ -5,6 +5,6 @@ namespace Katas
 {
     public interface IEmailService
     {
-        void EmailMessage(String message, List<String> emails);
+        void SendMessage(String message, List<String> emails);
     }
 }

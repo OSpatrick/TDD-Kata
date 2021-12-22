@@ -9,7 +9,7 @@ namespace Katas
         public string  Message { get; private set; }
         public List<string> EmailList { get; private set; }
 
-        public void EmailMessage(string message, List<string> emails)
+        public void SendMessage(string message, List<string> emails)
         {
             Message = message;
             EmailList = emails;

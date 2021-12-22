@@ -6,9 +6,10 @@ namespace Katas
 {
     public class RealEmailService : IEmailService
     {
-        public void EmailMessage(string message, List<string> emails)
+        public void SendMessage(string message, List<string> emails)
         {
             throw new NotImplementedException();
         }
+
     }
 }
