@@ -26,20 +26,16 @@ namespace Katas
 		{
 			for (int i = 0; i < items.Count; i++)
 			{
-				if ((!"Aged Brie".Equals(items[i].Name)) && !"Backstage passes to a TAFKAL80ETC concert".Equals(items[i].Name))
-				{
-					if (items[i].Quality > 0) {
-						if (!"Sulfuras, Hand of Ragnaros".Equals(items[i].Name))
-							DecrementQuality(items[i]);
-					}
-				}
-				else
-				{
-					if (items[i].Quality < 50)
-					{
+				if (ItemNameConstants.SULFURAS.Equals(items[i].Name)) continue;
+
+				if ((!ItemNameConstants.AGED_BRIE.Equals(items[i].Name)) && 
+					 !ItemNameConstants.BACK_STAGE_PASSES.Equals(items[i].Name)) {
+					 DecrementQuality(items[i]);
+				} else {
+
 						IncrementQuality(items[i]);
 
-						if ("Backstage passes to a TAFKAL80ETC concert".Equals(items[i].Name))
+						if (ItemNameConstants.BACK_STAGE_PASSES.Equals(items[i].Name))
 						{
 							if (items[i].SellIn < 11)
 								IncrementQuality(items[i]);
@@ -47,35 +43,23 @@ namespace Katas
 							if (items[i].SellIn < 6)
 								IncrementQuality(items[i]);
 						}
-					}
 				}
 
-				if (!"Sulfuras, Hand of Ragnaros".Equals(items[i].Name))
-				{
-					items[i].SellIn = (items[i].SellIn - 1);
-				}
+				items[i].SellIn = (items[i].SellIn - 1);
 
 				if (items[i].SellIn < 0)
 				{
-					if (!"Aged Brie".Equals(items[i].Name))
+					if (!ItemNameConstants.AGED_BRIE.Equals(items[i].Name))
 					{
-						if (!"Backstage passes to a TAFKAL80ETC concert".Equals(items[i].Name))
-						{
-							if (items[i].Quality > 0)
-							{
-								if (!"Sulfuras, Hand of Ragnaros".Equals(items[i].Name)) {
-									DecrementQuality(items[i]);
-								}
-							}
-						}
-						else
-						{
-							items[i].Quality = (items[i].Quality - items[i].Quality);
+						if (!ItemNameConstants.BACK_STAGE_PASSES.Equals(items[i].Name)) {
+							DecrementQuality(items[i]);
+						} else {
+							items[i].Quality = 0;
 						}
 					}
 					else
 					{
-							IncrementQuality(items[i]);
+						IncrementQuality(items[i]);
 					}
 				}
 			}
