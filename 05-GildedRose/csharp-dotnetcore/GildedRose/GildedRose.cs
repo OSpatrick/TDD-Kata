@@ -55,20 +55,23 @@ namespace Katas
 
         private static void HandleExpiredItem(Item item)
         {
-            if (!ItemNameConstants.AGED_BRIE.Equals(item.Name))
+            if (ItemNameConstants.AGED_BRIE.Equals(item.Name))
             {
-                if (!ItemNameConstants.BACK_STAGE_PASSES.Equals(item.Name))
-                {
-                    DecrementQuality(item);
-                }
-                else
-                {
-                    item.Quality = 0;
-                }
+                IncrementQuality(item);
             }
             else
             {
-                IncrementQuality(item);
+                if (ItemNameConstants.BACK_STAGE_PASSES.Equals(item.Name))
+                {
+                    item.Quality = 0;
+                }
+                else
+                {
+                    DecrementQuality(item);
+
+                    if (ItemNameConstants.CONJURED.Equals(item.Name))
+                        DecrementQuality(item);
+                }
             }
         }
 
