@@ -5,7 +5,7 @@ namespace Katas
 {
     public class GildedRose
     {
-        private static IList<Item> items = null;
+        public static IList<Item> items = null;
 
         static void Main(string[] args)
         {

@@ -13,5 +13,10 @@ namespace Katas
             SellIn = sellIn;
             Name = name;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}, {SellIn}, {Quality}";
+        }
     }
 }
