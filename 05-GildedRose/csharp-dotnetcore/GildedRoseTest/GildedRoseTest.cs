@@ -24,10 +24,10 @@ namespace Katas
             var itemNameSamples = new List<String>() {
                 "Foo", 
                 null, 
-                "", 
-                "Aged Brie", 
-                "Backstage passes to a TAFKAL80ETC concert",
-                "Sulfuras, Hand of Ragnaros"
+                "",
+                ItemNameConstants.AGED_BRIE,
+                ItemNameConstants.BACK_STAGE_PASSES,
+                ItemNameConstants.SULFURAS
             };
 
             var sellInValueSamples = new List<int>() { -1, 0, 5, 6, 10, 11};
