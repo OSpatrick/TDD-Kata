@@ -31,7 +31,7 @@ namespace Katas
             };
 
             var sellInValueSamples = new List<int>() { -1, 0, 5, 6, 10, 11};
-            var qualityValueSamples = new List<int>() { -1, 0, 1, 10, 49, 50};
+            var qualityValueSamples = new List<int>() { -1, 0, 1, 10, 49, 50, 51};
 
             CombinationApprovals.VerifyAllCombinations(TestCombinationSamples, 
                 itemNameSamples, sellInValueSamples, qualityValueSamples);

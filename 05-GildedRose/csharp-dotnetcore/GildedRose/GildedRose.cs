@@ -28,37 +28,24 @@ namespace Katas
 			{
 				if ((!"Aged Brie".Equals(items[i].Name)) && !"Backstage passes to a TAFKAL80ETC concert".Equals(items[i].Name))
 				{
-					if (items[i].Quality > 0)
-					{
+					if (items[i].Quality > 0) {
 						if (!"Sulfuras, Hand of Ragnaros".Equals(items[i].Name))
-						{
-							items[i].Quality = items[i].Quality - 1;
-						}
+							DecrementQuality(items[i]);
 					}
 				}
 				else
 				{
 					if (items[i].Quality < 50)
 					{
-						items[i].Quality = items[i].Quality + 1;
+						IncrementQuality(items[i]);
 
 						if ("Backstage passes to a TAFKAL80ETC concert".Equals(items[i].Name))
 						{
 							if (items[i].SellIn < 11)
-							{
-								if (items[i].Quality < 50)
-								{
-									items[i].Quality = (items[i].Quality + 1);
-								}
-							}
+								IncrementQuality(items[i]);
 
 							if (items[i].SellIn < 6)
-							{
-								if (items[i].Quality < 50)
-								{
-									items[i].Quality = (items[i].Quality + 1);
-								}
-							}
+								IncrementQuality(items[i]);
 						}
 					}
 				}
@@ -76,9 +63,8 @@ namespace Katas
 						{
 							if (items[i].Quality > 0)
 							{
-								if (!"Sulfuras, Hand of Ragnaros".Equals(items[i].Name))
-								{
-									items[i].Quality = (items[i].Quality - 1);
+								if (!"Sulfuras, Hand of Ragnaros".Equals(items[i].Name)) {
+									DecrementQuality(items[i]);
 								}
 							}
 						}
@@ -89,13 +75,20 @@ namespace Katas
 					}
 					else
 					{
-						if (items[i].Quality < 50)
-						{
-							items[i].Quality = (items[i].Quality + 1);
-						}
+							IncrementQuality(items[i]);
 					}
 				}
 			}
 		}
-    }
+
+		private static void IncrementQuality(Item item) {
+			if(item.Quality >= 50) { return; }
+			item.Quality++;
+		}
+
+		private static void DecrementQuality(Item item) {
+			if (item.Quality < 1) { return; }
+			item.Quality--;
+		}
+	}
 }
