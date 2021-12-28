@@ -4,6 +4,7 @@ using Xunit;
 using ApprovalTests;
 using ApprovalTests.Reporters;
 using ApprovalTests.Combinations;
+using System.Collections;
 
 namespace Katas
 {
@@ -40,9 +41,9 @@ namespace Katas
 
         private Item TestCombinationSamples(String itemName, int sellIn, int quality)
         {
-            GildedRose.items = new List<Item>() { new Item(itemName, sellIn, quality) };
-            GildedRose.updateQuality();
-            return GildedRose.items[0];
+           GildedRose.InitItemList(new Item(itemName, sellIn, quality));
+           GildedRose.updateQuality();
+           return GildedRose.items[0];
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Katas
 {
@@ -25,47 +26,75 @@ namespace Katas
 		public static void updateQuality()
 		{
 			for (int i = 0; i < items.Count; i++)
-			{
-				if (ItemNameConstants.SULFURAS.Equals(items[i].Name)) continue;
+            {
+                var item = items[i];
 
-				if ((!ItemNameConstants.AGED_BRIE.Equals(items[i].Name)) && 
-					 !ItemNameConstants.BACK_STAGE_PASSES.Equals(items[i].Name)) {
-					 DecrementQuality(items[i]);
-				} else {
+                if (ItemNameConstants.SULFURAS.Equals(item.Name)) continue;
 
-						IncrementQuality(items[i]);
+                if (ItemImprovesWithAge(item))
+                {
+                    ImproveItemQuality(item);
+                }
+                else
+                {
+                    DegradeItemQuality(item);
 
-						if (ItemNameConstants.BACK_STAGE_PASSES.Equals(items[i].Name))
-						{
-							if (items[i].SellIn < 11)
-								IncrementQuality(items[i]);
+                }
 
-							if (items[i].SellIn < 6)
-								IncrementQuality(items[i]);
-						}
-				}
+                item.SellIn--;
 
-				items[i].SellIn = (items[i].SellIn - 1);
+                if (item.SellIn < 0) HandleExpiredItem(item);
+            }
+        }
 
-				if (items[i].SellIn < 0)
-				{
-					if (!ItemNameConstants.AGED_BRIE.Equals(items[i].Name))
-					{
-						if (!ItemNameConstants.BACK_STAGE_PASSES.Equals(items[i].Name)) {
-							DecrementQuality(items[i]);
-						} else {
-							items[i].Quality = 0;
-						}
-					}
-					else
-					{
-						IncrementQuality(items[i]);
-					}
-				}
-			}
-		}
+        private static bool ItemImprovesWithAge(Item item)
+        {
+            return ItemNameConstants.AGED_BRIE.Equals(item.Name) ||
+                                 ItemNameConstants.BACK_STAGE_PASSES.Equals(item.Name);
+        }
 
-		private static void IncrementQuality(Item item) {
+        private static void HandleExpiredItem(Item item)
+        {
+            if (!ItemNameConstants.AGED_BRIE.Equals(item.Name))
+            {
+                if (!ItemNameConstants.BACK_STAGE_PASSES.Equals(item.Name))
+                {
+                    DecrementQuality(item);
+                }
+                else
+                {
+                    item.Quality = 0;
+                }
+            }
+            else
+            {
+                IncrementQuality(item);
+            }
+        }
+
+        private static void DegradeItemQuality(Item item)
+        {
+            DecrementQuality(item);
+
+            if (ItemNameConstants.CONJURED.Equals(item.Name))
+                DecrementQuality(item);
+        }
+
+        private static void ImproveItemQuality(Item item)
+        {
+            IncrementQuality(item);
+
+            if (ItemNameConstants.BACK_STAGE_PASSES.Equals(item.Name))
+            {
+                if (item.SellIn < 11)
+                    IncrementQuality(item);
+
+                if (item.SellIn < 6)
+                    IncrementQuality(item);
+            }
+        }
+
+        private static void IncrementQuality(Item item) {
 			if(item.Quality >= 50) { return; }
 			item.Quality++;
 		}
@@ -74,5 +103,10 @@ namespace Katas
 			if (item.Quality < 1) { return; }
 			item.Quality--;
 		}
-	}
+
+		public static void InitItemList(params Item[] p_items)
+        {
+			items = p_items.ToList();
+		}
+    }
 }
