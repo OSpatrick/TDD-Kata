@@ -24,15 +24,19 @@ namespace Katas
         {
             var itemNameSamples = new List<String>() {
                 "Foo", 
-                null, 
+                null,
                 "",
+                ItemNameConstants.SULFURAS,
                 ItemNameConstants.AGED_BRIE,
-                ItemNameConstants.BACK_STAGE_PASSES,
-                ItemNameConstants.SULFURAS
+                ItemNameConstants.BACK_STAGE_PASSES
             };
+            //ItemNameConstants.AGED_BRIE,
+            //ItemNameConstants.BACK_STAGE_PASSES,
+            //ItemNameConstants.SULFURAS
 
-            var sellInValueSamples = new List<int>() { -1, 0, 5, 6, 10, 11};
-            var qualityValueSamples = new List<int>() { -1, 0, 1, 10, 49, 50, 51};
+
+            var sellInValueSamples = new List<int>() { -1, 0, 1, 5, 6, 10, 11};
+            var qualityValueSamples = new List<int>() { -1, 0, 50, 51};
 
             CombinationApprovals.VerifyAllCombinations(TestCombinationSamples, 
                 itemNameSamples, sellInValueSamples, qualityValueSamples);
